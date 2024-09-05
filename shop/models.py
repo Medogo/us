@@ -35,6 +35,7 @@ class Product(models.Model):
     image3 = models.ImageField(upload_to='products/%Y/%m/%d', blank=True, null=True)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
+    stock = models.PositiveIntegerField(default=0)
     available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -54,6 +55,9 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse('shop:product_detail', args=[self.id, self.slug])
+
+    def available_quantity(self):
+        return max(0, self.stock)
 
 
 class SliderProduit(models.Model):
