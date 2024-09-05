@@ -30,7 +30,7 @@
     <!-- Section d'ajout au panier -->
     <div class="flex items-center justify-center bg-white py-5">
         <p class="text-xl mr-7">{{ product.price }} F CFA</p>
-        <form method="post" class="flex items-center">
+        <form method="post" class="flex items-center" action="{% url 'cart:cart_add' product.id %}">
             {% csrf_token %}
             <div class="mr-7">
                 {{ cart_product_form.quantity }}
