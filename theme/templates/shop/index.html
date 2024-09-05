@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+
+{% block title %} {% endblock %}
+
+
+{% block content %}
+
+
+
+    <!--carrousel-->
+    <section class="flex justify-center m-5">
+        <div class="border border-orange-500 p-2">
+            <div class="w-full max-w-5xl overflow-hidden ">
+                <div class="slide-track flex">
+                    <img src="/static/assert/rectangle-12.png" alt="Image 1" class="w-full flex-shrink-0">
+                    <img src="/static/assert/rectangle-12-1.png" alt="Image 2" class="w-full flex-shrink-0">
+                    <img src="/static/assert/rectangle-12.png" alt="Image 3" class="w-full flex-shrink-0">
+                    <img src="/static/assert/rectangle-12-1.png" alt="Image 4" class="w-full flex-shrink-0">
+                    <img src="/static/assert/rectangle-12.png" alt="Image 5" class="w-full flex-shrink-0">
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- section 2 liste produit -->
+    <section class="px-4 md:px-8 lg:px-36 mt-10">
+        <h1 class="text-[#5d5d5d] font-bold text-xl md:text-2xl uppercase mb-5">En vedettes : <strong class="text-sm md:text-base font-normal">Nos article en vedettes</strong></h1>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+            {% for cat in categories %}
+
+            <div class="h-full bg-white border-l-2 border-orange-500 border-opacity-60 rounded-lg flex justify-center items-center overflow-hidden">
+                <div>
+                    <img class="h-36 w-36 md:h-48 md:w-48 pt-3 mx-auto" src="{{ cat.image.url }}" alt="blog">
+                    <div class="p-4 md:p-6">
+                        <button class="bg-orange-500 text-white rounded-lg py-1 px-3 md:px-5 text-sm md:text-base">
+                            {{ cat.name }}</button>
+                    </div>
+                </div>
+            </div>
+                {% endfor %}
+
+        </div>
+    </section>
+
+    <!-- section 3 liste produit -->
+    <section class="px-4 md:px-8 lg:px-36 mt-10">
+        <h1 class="text-[#5d5d5d] font-bold text-xl md:text-2xl uppercase mb-5">Découvrir : <strong class="text-sm md:text-base font-normal">Découvrez tous nos articles</strong></h1>
+
+        <div class="flex flex-col md:flex-row w-full">
+            {% if product_promo %}
+            <div class="rounded-lg bg-white border border-orange-500 w-full md:w-[35%] flex flex-col justify-center items-center py-5 mb-5 md:mb-0">
+                <p class="text-white bg-orange-500 px-5 md:px-7 py-1 text-xl md:text-2xl font-bold rounded-2xl mb-5">PROMO !!!</p>
+                <img src="{{ product_promo.product.image.url }}" alt="" class="h-36 w-36 md:h-48 md:w-48">
+                <p class="font-semibold text-lg md:text-xl text-orange-500 my-2">{{ product_promo.product.name }}</p>
+                <p class="py-1 px-3 md:px-5 bg-slate-200 text-sm md:text-base"> {{  product_promo.product.description }}</p>
+                <div class="my-2">
+                    <strong class="text-xl md:text-2xl">{{ product_promo.product.price }}</strong>
+                </div>
+                <p class="text-sm md:text-base">Cette offre expire dans : </p>
+                <p class="uppercase text-xl md:text-2xl font-bold text-orange-500">{{ product_promo.expire_date}}</p>
+            </div>
+            {% endif %}
+            <div class="px-2 md:px-7 py-3 w-full md:w-[65%]">
+                <ul class="flex flex-wrap justify-center md:justify-start">
+                    <li class="px-2 md:px-3 border-r-2 border-r-orange-500 text-base md:text-xl mb-2"><a href="">Portatifs</a></li>
+                    <li class="px-2 md:px-3 border-r-2 border-r-orange-500 text-base md:text-xl mb-2"><a href="">Imprimantes & Consommables</a></li>
+                    <li class="px-2 md:px-3 border-r-2 border-r-orange-500 text-base md:text-xl mb-2"><a href="">Projecteurs</a></li>
+                    <li class="px-2 md:px-3 text-base md:text-xl mb-2">Autres...</li>
+                </ul>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 pt-3">
+                    <div class="rounded-lg bg-white border-b border-b-orange-500 flex flex-col justify-center items-center py-1">
+                        <p class="text-orange-500 py-1 text-lg md:text-xl font-bold rounded-2xl mb-1 uppercase"> HP PAVILION</p>
+                        <p class="py-1 px-2 bg-slate-200 text-xs md:text-[10px] mb-2"> Intel core i5 | Ram 8GB | DD SSD 512GB</p>
+                        <img src="/static/assert/pc1.png" alt="" class="h-[60px] w-[100px] md:h-[80px] md:w-[120px]">
+                        <p class="font-semibold text-lg md:text-xl text-orange-500 my-1 uppercase">HP ELITEBOOK</p>
+                        <div class="flex items-center">
+                            <strong class="text-sm md:text-base mr-2">220000 FCFA</strong>
+                            <button class="bg-orange-500 px-1 rounded"><i class="fa-solid fa-eye text-white"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- section 4 liste produit -->
+    <section class="px-4 md:px-8 lg:px-36 mt-10">
+        <h1 class="text-[#5d5d5d] font-bold text-xl md:text-2xl uppercase mb-5">Articles par marques : <strong class="text-sm md:text-base font-normal">Découvrez tous nos articles par marques</strong></h1>
+
+        <div class="flex flex-col md:flex-row w-full">
+            <div class="rounded-lg w-full md:w-[30%] flex flex-col pb-5 mb-5 md:mb-0">
+                <ul class="rounded-lg bg-white">
+                    <li class="uppercase border-b border-b-slate-500 px-2 flex items-center justify-between py-3 text-lg md:text-xl font-semibold hover:text-white hover:bg-slate-500">DEL <i class="fa-solid fa-chevron-down"></i></li>
+                    <li class="uppercase border-b border-b-slate-500 pl-2 py-3 text-lg md:text-xl font-semibold hover:text-white hover:bg-slate-500">HP</li>
+                    <li class="uppercase border-b border-b-slate-500 pl-2 py-3 text-lg md:text-xl font-semibold hover:text-white hover:bg-slate-500">TOSHIBA</li>
+                    <li class="uppercase border-b border-b-slate-500 pl-2 py-3 text-lg md:text-xl font-semibold hover:text-white hover:bg-slate-500">CANON</li>
+                </ul>
+            </div>
+            <div class="px-2 md:px-7 py-3 w-full md:w-[70%]">
+                <ul class="flex flex-wrap justify-center md:justify-start">
+                    <li class="px-2 md:px-3 border-r-2 border-r-orange-500 text-base md:text-xl mb-2"><a href="">Portatifs</a></li>
+                    <li class="px-2 md:px-3 border-r-2 border-r-orange-500 text-base md:text-xl mb-2"><a href="">Imprimantes & Consommables</a></li>
+                    <li class="px-2 md:px-3 border-r-2 border-r-orange-500 text-base md:text-xl mb-2"><a href="">Projecteurs</a></li>
+                    <li class="px-2 md:px-3 text-base md:text-xl mb-2">Autres...</li>
+                </ul>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 pt-3">
+                    <div class="rounded-lg bg-white border-b border-b-orange-500 flex flex-col justify-center items-center py-1">
+                        <p class="text-orange-500 py-1 text-lg md:text-xl font-bold rounded-2xl mb-1 uppercase"> HP PAVILION</p>
+                        <p class="py-1 px-2 bg-slate-200 text-xs md:text-[10px] mb-2"> Intel core i5 | Ram 8GB | DD SSD 512GB</p>
+                        <img src="/static/assert/pc1.png" alt="" class="h-[60px] w-[100px] md:h-[80px] md:w-[120px]">
+                        <p class="font-semibold text-lg md:text-xl text-orange-500 my-1 uppercase">HP ELITEBOOK</p>
+                        <div class="flex items-center">
+                            <strong class="text-sm md:text-base mr-2">220000 FCFA</strong>
+                            <button class="bg-orange-500 px-1 rounded"><i class="fa-solid fa-eye text-white"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- section 5 liste produit -->
+<section class="px-4 md:px-8 lg:px-36 mt-10">
+    <h1 class="text-[#5d5d5d] font-bold text-xl md:text-2xl uppercase mb-5">Les plus vendus : <strong class="text-sm md:text-base font-normal">Nos articles les plus vendus</strong></h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+        {% for plus in products_plus_vendus %}
+        <div class="h-full bg-white border-l-2 border-orange-500 border-opacity-60 rounded-lg flex justify-center items-center overflow-hidden">
+            <div>
+                <img class="h-36 w-36 md:h-48 md:w-48 pt-3 mx-auto" src="{{ plus.image.url }}" alt="blog">
+                <div class="p-4 md:p-6">
+                    <button class="bg-orange-500 text-white rounded-lg py-1 px-3 md:px-5 text-sm md:text-base">{{ plus.name }}</button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+    <br><br><br>
+
+
+
+
+
+
+
+
+{% endblock %}

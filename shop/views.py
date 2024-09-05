@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Category, Product
+from .models import Category, Product, PromotionProduit
 from cart.forms import CartAddProductForm
 
 
@@ -7,6 +7,8 @@ def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)
+    product_promo = PromotionProduit.objects.all().first()
+    products_plus_vendus = Product.objects.filter(is_plus_vendus=True).all()
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=category)
@@ -14,9 +16,11 @@ def product_list(request, category_slug=None):
     context = {
         'category': category,
         'categories': categories,
-        'products': products
+        'products': products,
+        'product_promo': product_promo,
+        'products_plus_vendus':products_plus_vendus
     }
-    return render(request, 'base.html', context)
+    return render(request, 'shop/index.html', context)
 
 
 def product_detail(request, id, slug):

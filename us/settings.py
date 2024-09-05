@@ -48,8 +48,10 @@ INSTALLED_APPS = [
     'accounts',
     'compressor',
     'tailwind',
-    'theme',
-    'django_browser_reload'
+   'theme',
+    'django_browser_reload',
+   # 'ckeditor',
+   # 'ckeditor_uploader',
 
 ]
 
@@ -173,7 +175,6 @@ COMPRESS_ROOT = BASE_DIR / 'static'
 
 COMPRESS_ENABLED = True
 
-STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
 
 # settings.py
 INTERNAL_IPS = [
@@ -182,4 +183,28 @@ INTERNAL_IPS = [
 
 TAILWIND_APP_NAME = "theme"
 
-NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm"
+
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': '100%',
+        'toolbar_CustomToolbarConfig': [
+            {'name': 'document', 'items': ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates']},
+            {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', '-', 'Undo', 'Redo']},
+            {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
+            {'name': 'basicstyles', 'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript']},
+            {'name': 'paragraph', 'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote']},
+            {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
+            {'name': 'insert', 'items': ['Image', 'Table', 'HorizontalRule', 'SpecialChar', 'Smiley']},
+            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
+            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
+            {'name': 'tools', 'items': ['Maximize']}
+        ],
+        'extraPlugins': ','.join(['codesnippet']),
+    }
+}
+
+CKEDITOR_UPLOAD_PATH = "uploads/"

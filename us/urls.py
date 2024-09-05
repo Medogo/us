@@ -4,7 +4,6 @@ from django.views.static import serve
 from django.conf import settings
 from django.conf.urls.static import static
 
-from .views import home
 
 urlpatterns = [
     #re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
@@ -18,8 +17,7 @@ urlpatterns = [
     path('coupons/', include('coupons.urls', namespace='coupons')),
 
     path('facture/', include('facture.urls', namespace='facture')),
-    path('shop', include('shop.urls', namespace='home')),
+    path('', include('shop.urls', namespace='home')),
     #path('accounts/', include('accounts.urls', namespace='accounts')),
-    path('', home, name='home'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
