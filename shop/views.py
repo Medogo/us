@@ -33,4 +33,8 @@ def product_detail(request, id, slug):
         'product': product,
         'cart_product_form': cart_product_form
     }
-    return render(request, 'shop/product/detail.html', context)
+    return render(request, 'shop/detailproduit.html', context)
+
+
+def detail(request):
+    return render(request, 'shop/detailproduit.html')
