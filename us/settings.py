@@ -17,7 +17,6 @@ from django.template.context_processors import static
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -28,7 +27,6 @@ SECRET_KEY = 'django-insecure-b&mt&dzi1odgl_rp(hsbig!59ah+#dyz8d50+esjplftsfx_x=
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -48,10 +46,10 @@ INSTALLED_APPS = [
     'accounts',
     'compressor',
     'tailwind',
-   'theme',
+    'theme',
     'django_browser_reload',
-   # 'ckeditor',
-   # 'ckeditor_uploader',
+    # 'ckeditor',
+    # 'ckeditor_uploader',
 
 ]
 
@@ -89,7 +87,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'us.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
@@ -99,7 +96,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -119,7 +115,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -131,12 +126,12 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 
 import os
+
 # Chemin vers le répertoire des fichiers statiques
 STATIC_URL = '/static/'
 
@@ -159,7 +154,6 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'  # Ou votre serveur SMTP
 EMAIL_PORT = 587
@@ -167,14 +161,11 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'votre_email@gmail.com'
 EMAIL_HOST_PASSWORD = 'votre_mot_de_passe'
 
-
 CART_SESSION_ID = 'cart'
-
 
 COMPRESS_ROOT = BASE_DIR / 'static'
 
 COMPRESS_ENABLED = True
-
 
 # settings.py
 INTERNAL_IPS = [
@@ -184,7 +175,6 @@ INTERNAL_IPS = [
 TAILWIND_APP_NAME = "theme"
 
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm"
-
 
 CKEDITOR_CONFIGS = {
     'default': {
@@ -196,7 +186,8 @@ CKEDITOR_CONFIGS = {
             {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', '-', 'Undo', 'Redo']},
             {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
             {'name': 'basicstyles', 'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript']},
-            {'name': 'paragraph', 'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote']},
+            {'name': 'paragraph',
+             'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote']},
             {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
             {'name': 'insert', 'items': ['Image', 'Table', 'HorizontalRule', 'SpecialChar', 'Smiley']},
             {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
