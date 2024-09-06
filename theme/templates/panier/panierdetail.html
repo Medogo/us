@@ -6,102 +6,82 @@
     <p class="text-3xl font-bold text-orange-500">Panier</p>
 </div>
 <div class="flex justify-center items-center p-1">
-    <div class="relative w-full md:w-3/4 flex flex-col text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
-        <table class="w-full text-left table-auto min-w-max">
-            <thead>
-                <tr>
-                    <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                        <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"></p>
-                    </th>
-                    <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                        <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                            Produits
-                        </p>
-                    </th>
-                    <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                        <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                            Prix
-                        </p>
-                    </th>
-                    <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                        <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                            Quantité
-                        </p>
-                    </th>
-                    <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                        <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                            Sous-total
-                        </p>
-                    </th>
-                    <!--th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
-                        <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                            Action
-                        </p>
-                    </th-->
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in cart %}
-                <tr>
-                    <td class="p-4 border-b border-blue-gray-50">
-                        <a href="{% url 'cart:cart_remove' item.product.id %}" class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
-                            <i class="fa-solid fa-xmark text-red-500 text-xl"></i>
-                        </a>
-                    </td>
-                    <td class="p-4 border-b border-blue-gray-50">
-                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                            {{ item.product.name }}
-                        </p>
-                    </td>
-                    <td class="p-4 border-b border-blue-gray-50">
-                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                            {{ item.price }} F CFA
-                        </p>
-                    </td>
-                    <td class="p-4 border-b border-blue-gray-50">
-                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                            {{ item.quantity }}
-                        </p>
-                    </td>
-                    <td class="p-4 border-b border-blue-gray-50">
-                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                            {{ item.total_price }} F CFA
-                        </p>
-                    </td>
-                    <!--td class="p-4 border-b border-blue-gray-50">
-                        <form action="{% url 'cart:cart_add' item.product.id %}" method="post" class="flex items-center">
-                            {% csrf_token %}
-                            <div class="mr-2">
-                                {{ item.update_quantity_form.quantity }}
-                            </div>
-                            {{ item.update_quantity_form.update }}
-                            <button type="submit" class="px-3 py-1 text-sm bg-blue-500 text-white rounded hover:bg-blue-600">
-                                Update
-                            </button>
-                        </form>
-                    </td-->
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+    <div class="relative w-full  md:w-1/2 flex flex-col  text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
+    <table class="w-full text-left table-auto min-w-max">
+      <thead>
+        <tr>
+            <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+                <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"></p>
+            </th>
+            <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+                <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                    Produits
+                </p>
+            </th>
+            <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+                <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                    Prix
+                </p>
+            </th>
+            <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+                <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                    Quantité
+                </p>
+            </th>
+            <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+                <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                    Sous-total
+                </p>
+            </th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in cart %}
+        <tr>
+            <td class="p-4 border-b border-blue-gray-50">
+                <a href="#" class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
+                    <i class="fa-solid fa-xmark text-red-500 text-xl"></i>
+                </a>
+            </td>
+            <td class="p-4 border-b border-blue-gray-50">
+                <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                    {{ item.product.name }}
+                </p>
+            </td>
+            <td class="p-4 border-b border-blue-gray-50">
+                <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                    {{ item.price }} F CFA
+                </p>
+            </td>
+            <td class="p-4 border-b border-blue-gray-50">
+                <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                    {{ item.quantity }}
+                </p>
+            </td>
+            <td class="p-4 border-b border-blue-gray-50">
+                <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                    {{ item.total_price }} F CFA
+                </p>
+            </td>
+          
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>
-<div class="flex justify-center items-center mt-8">
-    <div class="flex md:w-3/4 mt-5">
+<div class="flex justify-center items-center mt-5" >
+    <div class="flex md:w-1/2 mt-5">
         <div class="w-1/2">
-            <p class="text-center text-xl font-bold">Total panier</p>
-            <div class="px-4 py-2 border-dotted border-orange-500 border">
-                <p class="">TVA : <strong>{{ cart.get_total_price|floatformat:2 }} F CFA</strong></p>
-                <p>Total : <strong>{{ cart.get_total_price_after_discount|floatformat:2 }} F CFA</strong></p>
+            <p class="text-center text-xl font-bold ">Total panier</p>
+            <div class="px-4 py-2 border-dotted border-orange-500 border   ">
+                <p>Total : <strong>{{ cart.get_total_price_after_discount|floatformat:2 }} CFA</strong> </p>
             </div>
         </div>
-        <div class="w-1/2 px-8 py-5 flex flex-col justify-center">
-            <a href="{% url 'cart:cart_clear' %}" class="px-5 py-2 mb-3 flex items-center justify-center text-white bg-slate-700 rounded-lg hover:bg-slate-800">
-                Vider le panier <i class="fa-solid fa-xmark text-xl ml-2"></i>
-            </a>
-            <a href="{% url 'orders:order_create' %}" class="px-5 py-2 flex items-center justify-center text-white bg-orange-500 rounded-lg hover:bg-orange-600">
-                Procéder au paiement
-            </a>
+        <div class="px-8 py-5 flex flex-col ">
+            <a href="{% url 'cart:cart_clear' %}"  class="px-5 py-1 mb-2  flex items-center justify-center text-white color rounded-lg">Vider la carte  <i class="fa-solid fa-xmark  text-xl ml-2"></i></a>
+            <a href="{% url 'orders:order_create' %}" class="px-5 py-1 mb-2 flex items-center justify-center text-white bg-orange-500 rounded-lg" >Procéder au paiement</a>
         </div>
     </div>
 </div>
