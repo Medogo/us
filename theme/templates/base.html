@@ -40,7 +40,7 @@
     .dropdown-menu {
         position: absolute;
         top: 100%;
-        left: 0;
+        left: -110%;
         background-color: white;
         border: 1px solid #e5e7eb;
         border-radius: 0.375rem;
@@ -61,9 +61,9 @@
         padding: 0.5rem 1rem;
         display: block;
     }
-    .dropdown-menu a:hover {
+    /*.dropdown-menu a:hover {
         background-color: #f3f4f6;
-    }
+    }*/
         
         @media (min-width: 868px) {
             .hiden {
@@ -111,44 +111,82 @@
                 </div>
             </div>
         </div>
-        <div class="bg-slate-400 flex flex-wrap justify-center items-center text-white text-xs md:text-sm">
-            <div class="p-2 md:p-3 border-b md:border-b-0 md:border-r-2 w-1/2 md:w-auto relative group">
+        <div class="bg-slate-400 hiden md:flex flex-wrap justify-center items-center text-white text-xs md:text-sm">
+            <div class="p-2 md:p-3 border-b md:border-b-0 md:border-r-2  w-1/2 md:w-auto relative group">
                 <p><i class="fa-solid fa-laptop mr-1"></i> <a href="#"> Laptops & Bureau</a></p>
-                <div class="dropdown-menu">
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Ordinateurs portables</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Ordinateurs de bureau</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Accessoires</a>
+                <div class="dropdown-menu ">
+                    <div class="flex justify-start items-start p-4">
+                        {% for product in products %}
+                        <div class="mr-5 product-card bg-white rounded-lg shadow-md border border-slate-400 flex flex-col justify-between items-center p-2 m-2" style="width: 200px;">
+                            <p class="text-orange-500 py-1 text-sm font-bold rounded-2xl mb-1 uppercase"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.name }}</a></p>
+                            <img src="{{ product.image.url }}" alt="" class="h-[80px] w-[120px] object-contain">
+                            <p class="font-semibold text-sm text-center text-orange-500 my-1 uppercase"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.category.name }}</a></p>
+                            <div class="flex items-center">
+                                <strong class="text-sm mr-2"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.price }}</a></strong>
+                                <button class="bg-orange-500 px-1 rounded"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}"><i class="fa-solid fa-eye text-white"></i></a></button>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
             <div class="p-2 md:p-3 border-b md:border-b-0 md:border-r-2 w-1/2 md:w-auto relative group">
                 <p><i class="fa-solid fa-print mr-1"></i><a href="#">Imprimantes / Scanners</a></p>
-                <div class="dropdown-menu">
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Imprimantes jet d'encre</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Imprimantes laser</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Scanners</a>
+                <div class="dropdown-menu ">
+                    <div class="flex justify-start items-start p-4">
+                        {% for product in products %}
+                        <div class="mr-5 product-card bg-white rounded-lg shadow-md border border-slate-400 flex flex-col justify-between items-center p-2 m-2" style="width: 200px;">
+                            <p class="text-orange-500 py-1 text-sm font-bold rounded-2xl mb-1 uppercase"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.name }}</a></p>
+                            <img src="{{ product.image.url }}" alt="" class="h-[80px] w-[120px] object-contain">
+                            <p class="font-semibold text-sm text-center text-orange-500 my-1 uppercase"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.category.name }}</a></p>
+                            <div class="flex items-center">
+                                <strong class="text-sm mr-2"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.price }}</a></strong>
+                                <button class="bg-orange-500 px-1 rounded"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}"><i class="fa-solid fa-eye text-white"></i></a></button>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
             <div class="p-2 md:p-3 border-b md:border-b-0 md:border-r-2 w-1/2 md:w-auto relative group">
                 <p><i class="fa-solid fa-window-restore mr-1"></i><a href="#">Régulateurs / Onduleurs</a></p>
-                <div class="dropdown-menu">
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Régulateurs de tension</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Onduleurs</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Batteries de rechange</a>
+                <div class="dropdown-menu ">
+                    <div class="flex justify-start items-start p-4">
+                        {% for product in products %}
+                        <div class="mr-5 product-card bg-white rounded-lg shadow-md border border-slate-400 flex flex-col justify-between items-center p-2 m-2" style="width: 200px;">
+                            <p class="text-orange-500 py-1 text-sm font-bold rounded-2xl mb-1 uppercase"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.name }}</a></p>
+                            <img src="{{ product.image.url }}" alt="" class="h-[80px] w-[120px] object-contain">
+                            <p class="font-semibold text-sm text-center text-orange-500 my-1 uppercase"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.category.name }}</a></p>
+                            <div class="flex items-center">
+                                <strong class="text-sm mr-2"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.price }}</a></strong>
+                                <button class="bg-orange-500 px-1 rounded"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}"><i class="fa-solid fa-eye text-white"></i></a></button>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
             <div class="p-2 md:p-3 border-b md:border-b-0 md:border-r-2 w-1/2 md:w-auto relative group">
                 <p><i class="fa-solid fa-robot mr-1"></i><a href="#">Toners / Cartouches</a></p>
-                <div class="dropdown-menu">
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Toners</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cartouches d'encre</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Recharges</a>
+                <div class="dropdown-menu ">
+                    <div class="flex justify-start items-start p-4">
+                        {% for product in products %}
+                        <div class="mr-5 product-card bg-white rounded-lg shadow-md border border-slate-400 flex flex-col justify-between items-center p-2 m-2" style="width: 200px;">
+                            <p class="text-orange-500 py-1 text-sm font-bold rounded-2xl mb-1 uppercase"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.name }}</a></p>
+                            <img src="{{ product.image.url }}" alt="" class="h-[80px] w-[120px] object-contain">
+                            <p class="font-semibold text-sm text-center text-orange-500 my-1 uppercase"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.category.name }}</a></p>
+                            <div class="flex items-center">
+                                <strong class="text-sm mr-2"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.price }}</a></strong>
+                                <button class="bg-orange-500 px-1 rounded"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}"><i class="fa-solid fa-eye text-white"></i></a></button>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
-            <div class="p-2 md:p-3 w-full md:w-auto text-center">
-                <p><a href="">Autres</a></p>
             </div>
         </div>
     </header>
+    
     {% block content  %} {% endblock %}
 
     <footer class="bg-[#e67f09] py-3 text-white text-sm md:text-base font-semibold header_style">
