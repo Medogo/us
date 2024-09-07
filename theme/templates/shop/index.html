@@ -23,9 +23,9 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {% for cat in products_is_vedettes %}
 
-            <div class="h-full bg-white border-l-2 border-orange-500 border-opacity-60 rounded-lg flex justify-center items-center overflow-hidden">
+            <div class="h-full shadows bg-white border-l-2 border-orange-500 border-opacity-60 rounded-lg flex justify-center items-center overflow-hidden">
                 <div>
-                    <img class="h-36 w-36 md:h-48 md:w-48 pt-3 mx-auto" src="{{ cat.image.url }}" alt="blog">
+                    <img class="h-32 w-32 md:h-32 md:w-32  pt-3 mx-auto" src="{{ cat.image.url }}" alt="blog">
                     <div class="p-4 md:p-6">
                         <button class="bg-orange-500 text-white rounded-lg py-1 px-3 md:px-5 text-sm md:text-base">
 
@@ -140,9 +140,9 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
         {% for plus in products_plus_vendus %}
-        <div class="h-full bg-white border-l-2 border-orange-500 border-opacity-60 rounded-lg flex justify-center items-center overflow-hidden">
+        <div class="h-full bg-white border-l-2 border-orange-500 shadows border-opacity-60 rounded-lg flex justify-center items-center overflow-hidden">
             <div>
-                <img class="h-36 w-36 md:h-48 md:w-48 pt-3 mx-auto" src="{{ plus.image.url }}" alt="blog">
+                <img class="h-32 w-32 md:h-32 md:w-32 pt-3 mx-auto" src="{{ plus.image.url }}" alt="blog">
                 <div class="p-4 md:p-6">
                     <button class="bg-orange-500 text-white rounded-lg py-1 px-3 md:px-5 text-sm md:text-base">{{ plus.name }}</button>
                 </div>
@@ -151,7 +151,8 @@
         {% endfor %}
     </div>
 </section>
-    <br><br>
+
+<br><br>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
