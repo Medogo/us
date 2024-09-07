@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import MessagesList, Contact
+from .models import MessagesList, Contact, Company
+
 
 @admin.register(MessagesList)
 class MessagesListAdmin(admin.ModelAdmin):
@@ -21,3 +22,5 @@ class MessagesListAdmin(admin.ModelAdmin):
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('id', 'address', 'telephone', 'location')
     search_fields = ('address', 'telephone', 'location')
+
+admin.site.register(Company)

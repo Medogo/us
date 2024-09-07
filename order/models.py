@@ -1,9 +1,12 @@
 import uuid
 from django.db import models
+
+from contact.models import Company
 from shop.models import Product
 from accounts.models import CustomUser
 
 class Order(models.Model):
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, blank=True, null=True)
     order_number = models.CharField(max_length=12, unique=True, editable=False, default=uuid.uuid4().hex[:12].upper())
     customer = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='orders')
     address = models.CharField(max_length=250)

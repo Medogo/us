@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice {{ order.order_number }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { font-size: 24px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .total { font-weight: bold; }
+        .invoice-header { display: flex; justify-content: space-between; margin-bottom: 20px; }
+        .company-info { text-align: right; }
+    </style>
+</head>
+<body>
+    <div class="invoice-header">
+        <div class="order-info">
+            <h1>Invoice {{ order.order_number }}</h1>
+            <p><strong>Customer:</strong> {{ order.customer.get_full_name }}</p>
+            <p><strong>Address:</strong> {{ order.address }}</p>
+            <p><strong>Postal Code:</strong> {{ order.postal_code }}</p>
+            <p><strong>City:</strong> {{ order.city }}</p>
+            <p><strong>Order Date:</strong> {{ order.created }}</p>
+            <p><strong>Last Updated:</strong> {{ order.updated }}</p>
+            <p><strong>Paid:</strong> {{ order.paid|yesno:"Yes,No" }}</p>
+        </div>
+        <div class="company-info">
+            <h2>{{ company.name }}</h2>
+            <p>{{ company.address }}</p>
+            <p>{{ company.postal_code }} {{ company.city }}</p>
+            <p>Phone: {{ company.phone }}</p>
+            <p>Email: <a href="mailto:{{ company.email }}">{{ company.email }}</a></p>
+            <p>Website: <a href="{{ company.website }}" target="_blank">{{ company.website }}</a></p>
+        </div>
+    </div>
+
+    <h2>Order Items:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in order.items.all %}
+            <tr>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>${{ item.price }}</td>
+                <td>${{ item.get_cost }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p class="total"><strong>Total Cost:</strong> ${{ order.get_total_cost }}</p>
+                <a href="{% url 'cart:generate_invoice' order.id %}" class="btn btn-primary">Generate Invoice</a>
+
+</body>
+</html>

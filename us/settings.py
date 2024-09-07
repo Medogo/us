@@ -133,11 +133,11 @@ USE_TZ = True
 import os
 
 # Chemin vers le répertoire des fichiers statiques
-STATIC_URL = '/theme/static/'
+STATIC_URL = '/static/'
 
 # Ajoutez les chemins où Django doit chercher les fichiers statiques
 STATICFILES_DIRS = [
-    BASE_DIR / "/theme/static",
+    BASE_DIR / "/static",
 ]
 
 # Chemin vers le répertoire de collecte des fichiers statiques

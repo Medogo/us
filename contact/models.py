@@ -27,3 +27,17 @@ class Contact(models.Model):
 
     def __str__(self):
         return f'{self.address} {self.telephone} {self.location}'
+
+# models.py
+
+class Company(models.Model):
+    name = models.CharField(max_length=255)
+    address = models.CharField(max_length=255)
+    postal_code = models.CharField(max_length=20)
+    city = models.CharField(max_length=100)
+    phone = models.CharField(max_length=20, blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
+    website = models.URLField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
