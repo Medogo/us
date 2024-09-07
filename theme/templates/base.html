@@ -28,6 +28,52 @@
         .slide-track:hover {
             animation-play-state: paused;
         }
+        .hiden{
+            display: none;
+        }
+        .color{
+            background-color: rgb(50, 58, 73);
+        }
+        .group {
+        position: relative;
+    }
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.375rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+        z-index: 10;
+    }
+    .group:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    .dropdown-menu a {
+        color: #374151;
+        padding: 0.5rem 1rem;
+        display: block;
+    }
+    .dropdown-menu a:hover {
+        background-color: #f3f4f6;
+    }
+        
+        @media (min-width: 868px) {
+            .hiden {
+                display: flex;
+            }
+            .header_style{
+                margin-left:150px ;
+                margin-right:150px ;
+            }
+        }
     </style>
 
 {% tailwind_css %}
@@ -35,18 +81,18 @@
 
 </head>
 <body class="bg-slate-100">
-    <header>
-        <div class="bg-[#e67f09] py-4 flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4">
-            <div class="mb-4 md:mb-0">
+    <header class="header_style" >
+        <div class="bg-[#e67f09] md:py-4 flex px-5  md:flex-row justify-between md:justify-center items-center  md:space-y-0 md:space-x-4">
+            <div class="md:mb-0">
                 <img src="/static/assert/logo-white-2.png" alt="" class="h-16 w-16 md:h-20 md:w-20">
             </div>
 
-            <div class="flex flex-col md:flex-row w-full max-w-xl rounded bg-[#d9d9d9]">
+            <div class="  flex-col hiden  md:flex-row w-full max-w-xl rounded bg-[#d9d9d9]">
                 <div class="w-full md:w-1/3 rounded bg-slate-400 flex items-center">
                     <p class="text-[#5d5d5d] p-2 text-center text-xs md:text-sm font-semibold">TOUTES LES CATÉGORIES</p>
                 </div>
                 <div class="w-full md:w-2/3 rounded">
-                    <input type="text" class="w-full p-2 bg-[#d9d9d9]" placeholder="Chercher un produit, une marque..">
+                        <input type="text" id="search-input" class="w-full p-2 bg-[#d9d9d9]" placeholder="Chercher un produit, une marque..">
                 </div>
             </div>
 
@@ -57,26 +103,46 @@
                 </div>
                 <div class="text-center">
                     <i class="fa-solid fa-user"></i>
-                    <p class="font-semibold text-xs md:text-sm">Comptes</p>
+                    <p class="font-semibold text-xs md:text-sm"><a href="{% url 'accounts:auth' %}">Comptes</a></p>
                 </div>
                 <div class="text-center">
                     <i class="fa-solid fa-cart-shopping"></i>
-                    <p class="font-semibold text-xs md:text-sm">Panier</p>
+                    <p class="font-semibold text-xs md:text-sm"><a href="{% url 'cart:cart_detail' %}"> Panier</a></p>
                 </div>
             </div>
         </div>
         <div class="bg-slate-400 flex flex-wrap justify-center items-center text-white text-xs md:text-sm">
-            <div class="p-2 md:p-3 border-b md:border-b-0 md:border-r-2 w-1/2 md:w-auto">
-                <p><i class="fa-solid fa-laptop mr-1"></i> <a href=""> Laptops & Bureau</a></p>
+            <div class="p-2 md:p-3 border-b md:border-b-0 md:border-r-2 w-1/2 md:w-auto relative group">
+                <p><i class="fa-solid fa-laptop mr-1"></i> <a href="#"> Laptops & Bureau</a></p>
+                <div class="dropdown-menu">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Ordinateurs portables</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Ordinateurs de bureau</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Accessoires</a>
+                </div>
             </div>
-            <div class="p-2 md:p-3 border-b md:border-b-0 md:border-r-2 w-1/2 md:w-auto">
-                <p><i class="fa-solid fa-print mr-1"></i><a href="">Imprimantes / Scanners</a></p>
+            <div class="p-2 md:p-3 border-b md:border-b-0 md:border-r-2 w-1/2 md:w-auto relative group">
+                <p><i class="fa-solid fa-print mr-1"></i><a href="#">Imprimantes / Scanners</a></p>
+                <div class="dropdown-menu">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Imprimantes jet d'encre</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Imprimantes laser</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Scanners</a>
+                </div>
             </div>
-            <div class="p-2 md:p-3 border-b md:border-b-0 md:border-r-2 w-1/2 md:w-auto">
-                <p><i class="fa-solid fa-window-restore mr-1"></i><a href="">Régulateurs / Onduleurs</a></p>
+            <div class="p-2 md:p-3 border-b md:border-b-0 md:border-r-2 w-1/2 md:w-auto relative group">
+                <p><i class="fa-solid fa-window-restore mr-1"></i><a href="#">Régulateurs / Onduleurs</a></p>
+                <div class="dropdown-menu">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Régulateurs de tension</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Onduleurs</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Batteries de rechange</a>
+                </div>
             </div>
-            <div class="p-2 md:p-3 border-b md:border-b-0 md:border-r-2 w-1/2 md:w-auto">
-                <p><i class="fa-solid fa-robot mr-1"></i><a href="">Toners / Cartouches</a></p>
+            <div class="p-2 md:p-3 border-b md:border-b-0 md:border-r-2 w-1/2 md:w-auto relative group">
+                <p><i class="fa-solid fa-robot mr-1"></i><a href="#">Toners / Cartouches</a></p>
+                <div class="dropdown-menu">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Toners</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cartouches d'encre</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Recharges</a>
+                </div>
             </div>
             <div class="p-2 md:p-3 w-full md:w-auto text-center">
                 <p><a href="">Autres</a></p>
@@ -85,7 +151,7 @@
     </header>
     {% block content  %} {% endblock %}
 
-    <footer class="bg-[#e67f09] py-3 text-white text-sm md:text-base font-semibold">
+    <footer class="bg-[#e67f09] py-3 text-white text-sm md:text-base font-semibold header_style">
         <div class="flex flex-col md:flex-row justify-between px-4 md:px-20 items-center space-y-4 md:space-y-0">
             <div class="text-center md:text-left">
                 <img src="/static/assert/logo-white-2.png" alt="" class="h-24 w-24 md:h-32 md:w-32 mx-auto md:mx-0">
@@ -93,15 +159,16 @@
             <div class="text-center md:text-left">
                 <p class="font-bold mb-3">Mon compte</p>
                 <ul>
-                    <li><i class="fa-solid fa-angle-right mr-1"></i><a href="">Mon panier</a></li>
+                    <li><i class="fa-solid fa-angle-right mr-1"></i><a href="{% url 'cart:cart_detail' %}">Mon panier</a></li>
                     <li><i class="fa-solid fa-angle-right mr-1"></i><a href="">Mes préférés</a></li>
-                    <li><i class="fa-solid fa-angle-right mr-1"></i><a href="">Se connecter/Se deconnecter</a></li>
+                    <li><i class="fa-solid fa-angle-right mr-1"></i><a href="{% url 'accounts:auth' %}">Se Conecter/Se deconnecter</a>
+
                 </ul>
             </div>
             <div class="text-center md:text-left">
                 <p class="font-bold mb-3">Service</p>
                 <ul>
-                    <li><i class="fa-solid fa-angle-right mr-1"></i><a href="">Nous contacter</a></li>
+                    <li><i class="fa-solid fa-angle-right mr-1"></i><a href="{% url 'contact:contact' %}">Nous contacter</a></li>
                     <li><i class="fa-solid fa-angle-right mr-1"></i><a href="">Verifier une commande</a></li>
                     <li><i class="fa-solid fa-angle-right mr-1"></i><a href="">Offres</a></li>
                 </ul>
@@ -109,7 +176,7 @@
         </div>
         <hr class="mx-4 md:mx-12 my-5">
         <div class="text-center px-4">
-            <p class="text-xs md:text-sm">Copyright ----- 2024 US INFORMATIQUE. Tous droits réservés -----</p>
+            <p class="text-xs md:text-sm">Copyright @2024 US INFORMATIQUE. Tous droits réservés</p>
         </div>
     </footer>
 </body>

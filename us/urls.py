@@ -11,6 +11,8 @@ urlpatterns = [
     path("__reload__/", include("django_browser_reload.urls")),
 
     path('admin/', admin.site.urls),
+    path('contact/', include('contact.urls')),
+
     path('cart/', include('cart.urls', namespace='cart')),
     path('order/', include('order.urls', namespace='order')),
 
@@ -18,6 +20,6 @@ urlpatterns = [
 
     path('facture/', include('facture.urls', namespace='facture')),
     path('', include('shop.urls', namespace='home')),
-    #path('accounts/', include('accounts.urls', namespace='accounts')),
+    path('accounts/', include('accounts.urls', namespace='accounts')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,19 +1,23 @@
 from django.contrib import admin
-from .models import Message, Contact
+from .models import MessagesList, Contact
 
-class MessageAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'content')  # Colonnes affichées
-    search_fields = ('name', 'email')  # Champs de recherche
-    list_filter = ('email',)  # Filtres disponibles
-    ordering = ('name',)  # Ordre par défaut
-    fields = ('name', 'email', 'content', 'messages')  # Champs à afficher dans le formulaire d'ajout/modification
+@admin.register(MessagesList)
+class MessagesListAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'email', 'subject', 'date', 'date_update')
+    list_filter = ('date', 'date_update')
+    search_fields = ('name', 'email', 'subject', 'message')
+    readonly_fields = ('date', 'date_update')
+    fieldsets = (
+        (None, {
+            'fields': ('name', 'email', 'subject', 'message')
+        }),
+        ('Dates', {
+            'fields': ('date', 'date_update'),
+            'classes': ('collapse',)
+        }),
+    )
 
+@admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ('address', 'telephone', 'location')  # Colonnes affichées
-    search_fields = ('address', 'telephone')  # Champs de recherche
-    ordering = ('address',)  # Ordre par défaut
-    fields = ('address', 'telephone', 'location')  # Champs à afficher dans le formulaire d'ajout/modification
-
-# Enregistrez vos modèles avec leur configuration dans l'admin
-admin.site.register(Message, MessageAdmin)
-admin.site.register(Contact, ContactAdmin)
+    list_display = ('id', 'address', 'telephone', 'location')
+    search_fields = ('address', 'telephone', 'location')

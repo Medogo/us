@@ -1,6 +1,6 @@
-"""from django.urls import path
-
+from django.urls import path
+from .views import AuthView
+app_name = 'accounts'
 urlpatterns = [
-    path('login/', views.user_login, name='login'),
-    path('logout/', views.user_logout, name='logout'),
-]"""
+    path('auth/', AuthView.as_view(), name='auth'),
+]
