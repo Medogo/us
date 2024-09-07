@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    <section class="px-4 md:px-8 lg:px-36 mt-10">
+        <h1 class="text-[#5d5d5d] font-bold text-xl md:text-2xl uppercase mb-5">Produit : <strong class="text-sm md:text-base font-normal">Liste de tous les produits</strong></h1>
+
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+            <div class="bg-white shadow-lg border-l-2 border-orange-500 border-opacity-60 rounded-lg flex flex-col justify-between items-center overflow-hidden p-2">
+                <div>
+                    <img class="h-36 w-36 md:h-20 md:w-20 pt-3 mx-auto" src="/static/assert/souris.png" alt="product">
+                    <div class="p-4 md:p-6">
+                        <button class="bg-orange-500 text-white rounded-lg py-1 px-3 md:px-5 text-sm md:text-base">Projecteur / scanners</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <div id="pagination" class="flex space-x-1 justify-center mt-6">
+    </div>
+
+    {% endblock %}

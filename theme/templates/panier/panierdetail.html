@@ -1,6 +1,4 @@
 {% extends 'base.html' %}
-{% block title %}Panier{% endblock %}
-
 {% block content %}
 <div class="w-full h-32 flex justify-center items-center bg-orange-100 mb-5">
     <p class="text-3xl font-bold text-orange-500">Panier</p>
@@ -81,7 +79,7 @@
         </div>
         <div class="px-8 py-5 flex flex-col ">
             <a href="{% url 'cart:cart_clear' %}"  class="px-5 py-1 mb-2  flex items-center justify-center text-white color rounded-lg">Vider la carte  <i class="fa-solid fa-xmark  text-xl ml-2"></i></a>
-            <a href="{% url 'orders:order_create' %}" class="px-5 py-1 mb-2 flex items-center justify-center text-white bg-orange-500 rounded-lg" >Procéder au paiement</a>
+            <a href="{% url 'cart:redirect_to_whatsapp' %}" class="px-5 py-1 mb-2 flex items-center justify-center text-white bg-orange-500 rounded-lg">Procéder au paiement</a>
         </div>
     </div>
 </div>

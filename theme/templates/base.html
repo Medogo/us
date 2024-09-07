@@ -1,6 +1,5 @@
 {% load static tailwind_tags %}
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -122,8 +121,7 @@
                             <img src="{{ product.image.url }}" alt="" class="h-[80px] w-[120px] object-contain">
                             <p class="font-semibold text-sm text-center text-orange-500 my-1 uppercase"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.category.name }}</a></p>
                             <div class="flex items-center">
-                                <strong class="text-sm mr-2"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.price }}</a></strong>
-                                <button class="bg-orange-500 px-1 rounded"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}"><i class="fa-solid fa-eye text-white"></i></a></button>
+                                <strong class="text-sm mr-2"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}"></a></strong>
                             </div>
                         </div>
                         {% endfor %}
@@ -140,8 +138,6 @@
                             <img src="{{ product.image.url }}" alt="" class="h-[80px] w-[120px] object-contain">
                             <p class="font-semibold text-sm text-center text-orange-500 my-1 uppercase"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.category.name }}</a></p>
                             <div class="flex items-center">
-                                <strong class="text-sm mr-2"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.price }}</a></strong>
-                                <button class="bg-orange-500 px-1 rounded"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}"><i class="fa-solid fa-eye text-white"></i></a></button>
                             </div>
                         </div>
                         {% endfor %}
@@ -158,8 +154,6 @@
                             <img src="{{ product.image.url }}" alt="" class="h-[80px] w-[120px] object-contain">
                             <p class="font-semibold text-sm text-center text-orange-500 my-1 uppercase"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.category.name }}</a></p>
                             <div class="flex items-center">
-                                <strong class="text-sm mr-2"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.price }}</a></strong>
-                                <button class="bg-orange-500 px-1 rounded"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}"><i class="fa-solid fa-eye text-white"></i></a></button>
                             </div>
                         </div>
                         {% endfor %}
@@ -176,8 +170,6 @@
                             <img src="{{ product.image.url }}" alt="" class="h-[80px] w-[120px] object-contain">
                             <p class="font-semibold text-sm text-center text-orange-500 my-1 uppercase"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.category.name }}</a></p>
                             <div class="flex items-center">
-                                <strong class="text-sm mr-2"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.price }}</a></strong>
-                                <button class="bg-orange-500 px-1 rounded"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}"><i class="fa-solid fa-eye text-white"></i></a></button>
                             </div>
                         </div>
                         {% endfor %}
@@ -207,7 +199,7 @@
                 <p class="font-bold mb-3">Service</p>
                 <ul>
                     <li><i class="fa-solid fa-angle-right mr-1"></i><a href="{% url 'contact:contact' %}">Nous contacter</a></li>
-                    <li><i class="fa-solid fa-angle-right mr-1"></i><a href="">Verifier une commande</a></li>
+                    <li><i class="fa-solid fa-angle-right mr-1"></i><a href="{% url 'orders:order_verifie' %}">Verifier une commande</a></li>
                     <li><i class="fa-solid fa-angle-right mr-1"></i><a href="">Offres</a></li>
                 </ul>
             </div>

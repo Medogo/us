@@ -5,6 +5,8 @@ from cart.cart import Cart
 from .models import Order, OrderItem
 from .forms import OrderCreateForm
 import logging
+from django.shortcuts import render, get_object_or_404
+
 
 logger = logging.getLogger(__name__)
 
@@ -42,3 +44,14 @@ def order_create(request):
         form = OrderCreateForm(initial={'customer': request.user})
 
     return render(request, 'order/create.html', {'cart': cart, 'form': form})
+
+
+def check_order(request):
+    order = None
+    order_number = None
+
+    if request.method == 'GET' and 'order_number' in request.GET:
+        order_number = request.GET.get('order_number')
+        order = Order.objects.filter(order_number=order_number).first()
+
+    return render(request, 'shop/verifiercommande.html', {'order': order, 'order_number': order_number})

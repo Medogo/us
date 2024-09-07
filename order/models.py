@@ -4,7 +4,7 @@ from shop.models import Product
 from accounts.models import CustomUser
 
 class Order(models.Model):
-   # order_number = models.CharField(max_length=12, unique=True, editable=False, default=uuid.uuid4().hex[:12].upper())
+    order_number = models.CharField(max_length=12, unique=True, editable=False, default=uuid.uuid4().hex[:12].upper())
     customer = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='orders')
     address = models.CharField(max_length=250)
     postal_code = models.CharField(max_length=20)

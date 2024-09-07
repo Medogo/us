@@ -6,6 +6,7 @@ from .forms import CartAddProductForm
 from coupons.forms import CouponApplyForm
 
 
+
 @require_POST
 def cart_add(request, product_id):
     cart = Cart(request)
@@ -37,3 +38,23 @@ def cart_clear(request):
     cart = Cart(request)
     cart.clear()
     return redirect('cart:cart_detail')
+
+from urllib.parse import quote
+
+
+def redirect_to_whatsapp(request):
+    cart = Cart(request)
+    message = "Bonjour, je souhaite commander les produits suivants :\n"
+
+    for item in cart:
+        message += f"- {item['product'].name}, Quantité: {item['quantity']}\n"
+
+    # Remplacez par le numéro de téléphone de l'entreprise
+    phone_number = '22999954526'
+
+    # Encoder le message pour qu'il soit compatible avec une URL
+    url_encoded_message = quote(message)
+
+    whatsapp_url = f"https://wa.me/{phone_number}?text={url_encoded_message}"
+
+    return redirect(whatsapp_url)

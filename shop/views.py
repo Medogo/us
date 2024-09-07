@@ -37,3 +37,5 @@ def product_detail(request, id, slug):
     }
     return render(request, 'shop/detailproduit.html', context)
 
+def cc(request):
+    return render(request, 'shop/produit.html')

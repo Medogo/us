@@ -5,4 +5,7 @@ app_name = 'orders'
 
 urlpatterns = [
     path('create/', views.order_create, name='order_create'),
+    path('verifie-commande/', views.check_order, name='order_verifie'),
+
 ]
+

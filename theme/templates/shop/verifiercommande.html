@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="flex flex-col justify-center items-center min-h-screen bg-gradient-to-b from-orange-50 to-orange-100">
+    <div class="w-full py-10 flex justify-center items-center bg-white shadow-md mb-8">
+        <h1 class="text-4xl font-bold text-orange-600">Vérifier une commande</h1>
+    </div>
+
+    <div class="w-full max-w-4xl px-4 md:px-8 flex flex-col items-center mb-12">
+        <form method="get" action="" class="w-full">
+            <label for="order_number" class="block text-xl font-medium text-slate-700 mb-3 text-center">Numéro de commande:</label>
+            <div class="flex items-center justify-center">
+                <input type="text" id="order_number" name="order_number" value="{{ order_number }}"
+                       class="w-full max-w-2xl focus:outline-none focus:ring-2 focus:ring-orange-500 px-5 py-3 text-xl border border-slate-300 rounded-l-md"
+                       placeholder="Exemple : 98XHGTSL" required>
+                <button type="submit" class="px-6 py-3 bg-orange-500 text-white text-xl rounded-r-md hover:bg-orange-600 transition duration-300 ease-in-out flex items-center">
+                    Vérifier <i class="fas fa-search ml-2"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    {% if order %}
+    <div class="w-full max-w-4xl px-4 md:px-6 bg-white rounded-lg shadow-lg p-8 mb-12">
+        <h2 class="text-3xl font-semibold text-slate-800 mb-6 border-b pb-2 text-center">Détails de la commande</h2>
+        <div class="flex flex-col items-center mb-8">
+            <p class="text-lg w-full text-center mb-2"><span class="font-semibold">Numéro de commande:</span> {{ order.order_number }}</p>
+            <p class="text-lg w-full text-center mb-2"><span class="font-semibold">Date de commande:</span> {{ order.created }}</p>
+            <p class="text-lg w-full text-center mb-2"><span class="font-semibold">Adresse de livraison:</span> {{ order.address }}, {{ order.city }}, {{ order.postal_code }}</p>
+            <p class="text-lg w-full text-center mb-2"><span class="font-semibold">État de paiement:</span>
+                <span class="{% if order.paid %}text-green-600{% else %}text-red-600{% endif %}">
+                    {% if order.paid %}Payé{% else %}Non payé{% endif %}
+                </span>
+            </p>
+        </div>
+
+        <h3 class="text-2xl font-semibold text-slate-800 mb-4 text-center">Articles commandés</h3>
+        <ul class="space-y-2 mb-6 w-full max-w-2xl mx-auto">
+            {% for item in order.items.all %}
+                <li class="flex justify-between items-center border-b pb-2">
+                    <span>{{ item.product.name }} (x{{ item.quantity }})</span>
+                    <span class="font-semibold">{{ item.get_cost }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+        <p class="text-xl font-bold text-center">Coût total: {{ order.get_total_cost }}</p>
+    </div>
+    {% elif order_number %}
+    <div class="w-full max-w-4xl px-4 md:px-8 mt-8">
+        <p class="text-lg text-red-500 text-center bg-red-100 border border-red-400 rounded-md p-4">
+            Aucune commande trouvée avec ce numéro.
+        </p>
+    </div>
+    {% endif %}
+</div>
+
+    <br><br><br><br>
+{% endblock %}
