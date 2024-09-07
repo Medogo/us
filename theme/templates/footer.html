@@ -1,0 +1,28 @@
+    <footer class="bg-[#e67f09] py-3 text-white text-sm md:text-base font-semibold header_style">
+        <div class="flex flex-col md:flex-row justify-between px-4 md:px-20 items-center space-y-4 md:space-y-0">
+            <div class="text-center md:text-left">
+                <img src="/static/assert/logo-white-2.png" alt="" class="h-24 w-24 md:h-32 md:w-32 mx-auto md:mx-0">
+            </div>
+            <div class="text-center md:text-left">
+                <p class="font-bold mb-3">Mon compte</p>
+                <ul>
+                    <li><i class="fa-solid fa-angle-right mr-1"></i><a href="{% url 'cart:cart_detail' %}">Mon panier</a></li>
+                    <li><i class="fa-solid fa-angle-right mr-1"></i><a href="">Mes préférés</a></li>
+                    <li><i class="fa-solid fa-angle-right mr-1"></i><a href="{% url 'accounts:auth' %}">Se Conecter/Se deconnecter</a>
+
+                </ul>
+            </div>
+            <div class="text-center md:text-left">
+                <p class="font-bold mb-3">Service</p>
+                <ul>
+                    <li><i class="fa-solid fa-angle-right mr-1"></i><a href="{% url 'contact:contact' %}">Nous contacter</a></li>
+                    <li><i class="fa-solid fa-angle-right mr-1"></i><a href="{% url 'orders:order_verifie' %}">Verifier une commande</a></li>
+                    <li><i class="fa-solid fa-angle-right mr-1"></i><a href="">Offres</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr class="mx-4 md:mx-12 my-5">
+        <div class="text-center px-4">
+            <p class="text-xs md:text-sm">Copyright @2024 US INFORMATIQUE. Tous droits réservés</p>
+        </div>
+    </footer>
