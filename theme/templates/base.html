@@ -116,12 +116,18 @@
                 <div class="dropdown-menu ">
                     <div class="flex justify-start items-start p-4">
                         {% for product in products %}
-                        <div class="mr-5 product-card bg-white rounded-lg shadow-md border border-slate-400 flex flex-col justify-between items-center p-2 m-2" style="width: 200px;">
+                        <div class="mr-5  bg-white rounded-lg shadow-md border border-slate-400 flex flex-col justify-between items-center p-2 m-2" style="width: 200px;">
                             <p class="text-orange-500 py-1 text-sm font-bold rounded-2xl mb-1 uppercase"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.name }}</a></p>
                             <img src="{{ product.image.url }}" alt="" class="h-[80px] w-[120px] object-contain">
                             <p class="font-semibold text-sm text-center text-orange-500 my-1 uppercase"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.category.name }}</a></p>
                             <div class="flex items-center">
+<<<<<<< HEAD
                                 <strong class="text-sm mr-2"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}"></a></strong>
+=======
+                                <strong class="text-sm md:text-sm mr-1"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.price }}</a></strong>
+                                <button class="bg-orange-500 rounded mr-1"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}"><i class="fa-solid fa-eye text-white"></i></a></button>
+                               <!-- <button class="color rounded"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}"><i class="fa-regular fa-heart text-white"></i></a></button>-->
+>>>>>>> a11ac3f09c62836c4d2932e3c5e615c1f3433e1b
                             </div>
                         </div>
                         {% endfor %}
@@ -133,11 +139,16 @@
                 <div class="dropdown-menu ">
                     <div class="flex justify-start items-start p-4">
                         {% for product in products %}
-                        <div class="mr-5 product-card bg-white rounded-lg shadow-md border border-slate-400 flex flex-col justify-between items-center p-2 m-2" style="width: 200px;">
+                        <div class="mr-5  bg-white rounded-lg shadow-md border border-slate-400 flex flex-col justify-between items-center p-2 m-2" style="width: 200px;">
                             <p class="text-orange-500 py-1 text-sm font-bold rounded-2xl mb-1 uppercase"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.name }}</a></p>
                             <img src="{{ product.image.url }}" alt="" class="h-[80px] w-[120px] object-contain">
                             <p class="font-semibold text-sm text-center text-orange-500 my-1 uppercase"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.category.name }}</a></p>
                             <div class="flex items-center">
+<<<<<<< HEAD
+=======
+                                <strong class="text-sm mr-2"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.price }}</a></strong>
+                                <button class="bg-orange-500  rounded"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}"><i class="fa-solid fa-eye text-white"></i></a></button>
+>>>>>>> a11ac3f09c62836c4d2932e3c5e615c1f3433e1b
                             </div>
                         </div>
                         {% endfor %}
@@ -154,6 +165,11 @@
                             <img src="{{ product.image.url }}" alt="" class="h-[80px] w-[120px] object-contain">
                             <p class="font-semibold text-sm text-center text-orange-500 my-1 uppercase"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.category.name }}</a></p>
                             <div class="flex items-center">
+<<<<<<< HEAD
+=======
+                                <strong class="text-sm mr-2"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.price }}</a></strong>
+                                <button class="bg-orange-500  rounded"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}"><i class="fa-solid fa-eye text-white"></i></a></button>
+>>>>>>> a11ac3f09c62836c4d2932e3c5e615c1f3433e1b
                             </div>
                         </div>
                         {% endfor %}
@@ -170,6 +186,11 @@
                             <img src="{{ product.image.url }}" alt="" class="h-[80px] w-[120px] object-contain">
                             <p class="font-semibold text-sm text-center text-orange-500 my-1 uppercase"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.category.name }}</a></p>
                             <div class="flex items-center">
+<<<<<<< HEAD
+=======
+                                <strong class="text-sm mr-2"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}">{{ product.price }}</a></strong>
+                                <button class="bg-orange-500 rounded"><a href="{% url 'shop:product_detail' id=product.id slug=product.slug %}"><i class="fa-solid fa-eye  text-white"></i></a></button>
+>>>>>>> a11ac3f09c62836c4d2932e3c5e615c1f3433e1b
                             </div>
                         </div>
                         {% endfor %}
