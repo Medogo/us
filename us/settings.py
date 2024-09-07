@@ -133,11 +133,11 @@ USE_TZ = True
 import os
 
 # Chemin vers le répertoire des fichiers statiques
-STATIC_URL = '/static/'
+STATIC_URL = '/theme/static/'
 
 # Ajoutez les chemins où Django doit chercher les fichiers statiques
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / "/theme/static",
 ]
 
 # Chemin vers le répertoire de collecte des fichiers statiques
@@ -174,7 +174,9 @@ INTERNAL_IPS = [
 
 TAILWIND_APP_NAME = "theme"
 
-NPM_BIN_PATH = r"C:\Program Files\nodejs\npm"
+#NPM_BIN_PATH = r"C:\Program Files\nodejs\npm"
+NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
+
 
 CKEDITOR_CONFIGS = {
     'default': {
